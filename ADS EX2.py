@@ -2,10 +2,9 @@
 """
 Created on Tue Oct 10 11:44:44 2023
 APPLIED DATA SCIENCE 1
-@author: pc
+@author: Peter Adedeji
 """
 
-#EXERCISE 2
 # import standard math library
 import numpy as np
 
