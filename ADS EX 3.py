@@ -2,9 +2,8 @@
 """
 Created on Tue Oct 10 12:10:33 2023
 ADS1
-@author: pc
+@author: Peter Adedeji
 """
-#EXERCISE 3
 # import standard math library
 import numpy as np
 
@@ -44,4 +43,3 @@ plt.show()
 
 # save plot
 plt.savefig('ADS1.png')
-plt.show()
