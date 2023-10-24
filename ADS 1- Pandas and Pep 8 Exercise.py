@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Oct 17 11:45:45 2023
-@author: pc
+@author: Peter Adedeji
 """
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# QUESTION 1
 # read csv file
 countries  = pd.read_csv("countries_top10.csv")
 print('\n', countries)
@@ -29,7 +28,6 @@ print('\n', countries_top10)
 # writing into an excel file
 countries_top10.to_excel("countries_top10.xlsx")
 
-# QUESTION 2
 # read the xlsx file
 GDP_2015dollars = pd.read_excel("GDP_2015dollars.xlsx")
 print('\n', GDP_2015dollars)
@@ -45,7 +43,6 @@ plt.plot(GDP_2015dollars["Year"], GDP_2015dollars["China"], ":", label="China")
 plt.plot(GDP_2015dollars["Year"], GDP_2015dollars["Germany"], "--", label="Germany")
 plt.plot(GDP_2015dollars["Year"], GDP_2015dollars["Japan"], "-.", label="Japan")
 plt.plot(GDP_2015dollars["Year"], GDP_2015dollars["United States"], "-", label="United States")
-
 plt.title('Countries/Year')
 plt.xlabel("Year")
 plt.ylabel("Countries")
