@@ -2,9 +2,9 @@
 """
 Created on Tue Oct 10 11:05:34 2023
 APPLIED DATA SCIENCE 1
-@author: pc
+@author: Peter Adedeji
 """
-#EXERCISE 1
+
 import numpy as np
 import matplotlib.pyplot as plt
 
