@@ -1,6 +1,7 @@
 # Import libraries
 import pandas as pd
 import matplotlib.pyplot as plt
+import stats as stats
 import seaborn as sns
 
 
@@ -33,14 +34,13 @@ def Popular_Indicators(Popular_indicators):
 
 
 # Load and process data
-df_pop_ind, df_popular_ind = Popular_Indicators('df_popular_indicators')
+df_pop_ind, df_popular_ind = Popular_Indicators('Popular_indicators')
 
 
 # Display summary statistics
 # Filter data for selected countries
 selected_countries = ["Argentina", "India", "Nigeria", "Saudi Arabia"]
 selected_df = df_popular_ind[df_popular_ind["Country Name"].isin(selected_countries)]
-
 
 # Display summary statistics using .describe()
 summary_stats = selected_df.groupby(['Country Name']).describe()
@@ -63,9 +63,17 @@ print("\nVariance Values:\n", variance_values)
 corr_values = selected_df.groupby(['Country Name']).corr()
 print("\n Correlation Values:\n", corr_values)
 
+# Other statistical methods
 # Skewness
 skew_value = selected_df.groupby(['Country Name']).skew()
 print("\n Skewness Values:\n", skew_value)
+
+# Check the data types of each column
+numeric_columns = selected_df.select_dtypes(include=[float, int]).columns
+
+# Kurtosis
+kurtosis_value = stats.kurtosis(selected_df[numeric_columns])
+print("\n Kurtosis Values:\n", kurtosis_value)
 
 # Time series plot
 # Filter data for the population density indicator
@@ -93,9 +101,11 @@ for country in population_density_data.columns:
 plt.xlabel('Year')
 plt.ylabel('Population Density (people per sq. km of land area)')
 plt.title('Population Density Over Time')
+
+# Add legend
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
 
-# Show the plot
+# Show plot
 plt.show()
 
 # Filter data for the agricultural land indicator
@@ -124,9 +134,11 @@ for country in agricultural_land_data.columns:
 plt.xlabel('Year')
 plt.ylabel('Agricultural Land (% of land area)')
 plt.title('Agricultural Land Over Time')
+
+# Add legend
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
 
-# Show the plot
+# Show plot
 plt.show()
 
 # Filter data for the arable land indicator
@@ -153,9 +165,11 @@ for country in arable_land_data.columns:
 plt.xlabel('Year')
 plt.ylabel('Arable Land (% of land area)')
 plt.title('Arable Land Over Time')
+
+# Add legend
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
 
-# Show the plot
+# Show plot
 plt.show()
 
 # Correlation heatmap
@@ -184,7 +198,11 @@ correlation_matrix = argentina_data.corr()
 # Plotting heatmap
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='viridis', linewidths=0.5)
+
+# Add title
 plt.title('Correlation Matrix for Indicators in Argentina')
+
+# Show plot
 plt.show()
 
 # Filter data for India
@@ -212,7 +230,11 @@ correlation_matrix = india_data.corr()
 # Plotting heatmap
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+
+# Add title
 plt.title('Correlation Matrix for Indicators in India')
+
+# Show plot
 plt.show()
 
 # Filter data for Nigeria
@@ -240,7 +262,11 @@ correlation_matrix = nigeria_data.corr()
 # Plotting heatmap
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='Greens', linewidths=0.5)
+
+# Add title
 plt.title('Correlation Matrix for Indicators in Nigeria')
+
+# Show plot
 plt.show()
 
 # Filter data for Saudi Arabia
@@ -268,5 +294,9 @@ correlation_matrix = saudi_arabia_data.corr()
 # Plotting heatmap
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='Oranges', linewidths=0.5)
+
+# Add title
 plt.title('Correlation Matrix for Indicators in Saudi Arabia')
+
+# Show plot
 plt.show()
