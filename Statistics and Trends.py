@@ -98,9 +98,9 @@ for country in population_density_data.columns:
     plt.plot(population_density_data.index, population_density_data[country], label=country)
 
 # Add labels and title
-plt.xlabel('Year')
-plt.ylabel('Population Density (people per sq. km of land area)')
-plt.title('Population Density Over Time')
+plt.xlabel('Year', fontsize=15)
+plt.ylabel('Population Density (people per sq. km of land area)', fontsize = 15)
+plt.title('Population Density Over Time', fontsize = 20)
 
 # Add legend
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
@@ -131,9 +131,9 @@ for country in agricultural_land_data.columns:
              label=country)
 
 # Add labels and title
-plt.xlabel('Year')
-plt.ylabel('Agricultural Land (% of land area)')
-plt.title('Agricultural Land Over Time')
+plt.xlabel('Year', fontsize = 15)
+plt.ylabel('Agricultural Land (% of land area)', fontsize = 15)
+plt.title('Agricultural Land Over Time', fontsize = 20)
 
 # Add legend
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
@@ -162,9 +162,9 @@ for country in arable_land_data.columns:
     plt.plot(arable_land_data.index, arable_land_data[country], label=country)
 
 # Add labels and title
-plt.xlabel('Year')
-plt.ylabel('Arable Land (% of land area)')
-plt.title('Arable Land Over Time')
+plt.xlabel('Year', fontsize = 15)
+plt.ylabel('Arable Land (% of land area)', fontsize = 15)
+plt.title('Arable Land Over Time', fontsize = 20)
 
 # Add legend
 plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
@@ -200,7 +200,7 @@ plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='viridis', linewidths=0.5)
 
 # Add title
-plt.title('Correlation Matrix for Indicators in Argentina')
+plt.title('Correlation Matrix for Indicators in Argentina', fontsize = 25)
 
 # Show plot
 plt.show()
@@ -232,7 +232,7 @@ plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
 
 # Add title
-plt.title('Correlation Matrix for Indicators in India')
+plt.title('Correlation Matrix for Indicators in India', fontsize = 25)
 
 # Show plot
 plt.show()
@@ -264,7 +264,7 @@ plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='Greens', linewidths=0.5)
 
 # Add title
-plt.title('Correlation Matrix for Indicators in Nigeria')
+plt.title('Correlation Matrix for Indicators in Nigeria', fontsize = 25)
 
 # Show plot
 plt.show()
@@ -296,7 +296,7 @@ plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='Oranges', linewidths=0.5)
 
 # Add title
-plt.title('Correlation Matrix for Indicators in Saudi Arabia')
+plt.title('Correlation Matrix for Indicators in Saudi Arabia', fontsize = 25)
 
 # Show plot
 plt.show()
