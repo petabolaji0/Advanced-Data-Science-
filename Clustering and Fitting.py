@@ -23,7 +23,7 @@ print(df_world_data)
 print(df_world_data.describe())
 
 # Drop non-numeric columns
-numeric_df = df_pop_data.drop(['Country Name', 'Country Code', 
+numeric_df = df_pop_data.drop(['Country Name', 'Country Code',\ 
                                'Indicator Name', 'Indicator Code'], axis=1)
 
 # Impute missing values with the mean of the respective columns
