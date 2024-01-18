@@ -7,23 +7,32 @@ from sklearn.impute import SimpleImputer
 from scipy.optimize import curve_fit
 from errors import error_prop, covar_to_corr
 
-# Read CSV file
-df_pop_data = pd.read_csv('population_growth.csv')
-print(df_pop_data)
-print(df_pop_data.describe())
 
-# Transpose and clean data
-df_world_data = df_pop_data.transpose()
-df_world_data.columns = df_world_data.iloc[0]
-df_world_data = df_world_data[4:-1]
+def population_data(population_growth):
+    """define a function that reads data and returns two dataframes of read and
+    transposed data"""
+    
+    df_pop_data = pd.read_csv("population_growth.csv")
+    print(df_pop_data)
+    print(df_pop_data.describe())
 
-# Set index as Year
-df_world_data.index.names = ["Year"]
-print(df_world_data)
-print(df_world_data.describe())
+    # Transpose and clean data
+    df_world_data = df_pop_data.transpose()
+    df_world_data.columns = df_world_data.iloc[0]
+    df_world_data = df_world_data[4:-1]
+
+    # Set index as Year
+    df_world_data.index.names = ["Year"]
+    print(df_world_data)
+    print(df_world_data.describe())
+
+    return df_pop_data
+
+
+df_pop_data = population_data('population_growth.csv')
 
 # Drop non-numeric columns
-numeric_df = df_pop_data.drop(['Country Name', 'Country Code',\ 
+numeric_df = df_pop_data.drop(['Country Name', 'Country Code', 
                                'Indicator Name', 'Indicator Code'], axis=1)
 
 # Impute missing values with the mean of the respective columns
@@ -31,7 +40,6 @@ imputer = SimpleImputer(strategy='mean')
 numeric_df_imputed = pd.DataFrame(imputer.fit_transform(numeric_df),\
                                   columns=numeric_df.columns)
 
-# Clustering
 # Perform KMeans clustering
 kmeans = KMeans(n_clusters=3).fit(numeric_df_imputed)
 df_pop_data['cluster'] = kmeans.labels_
@@ -47,8 +55,8 @@ plt.scatter(kmeans.cluster_centers_[:,0], kmeans.cluster_centers_[:,1],\
            marker='x', c='black', label='Centroids')
 
 # Add x-label and y-label
-plt.xlabel('Index')
-plt.ylabel('Population Growth (1980)')
+plt.xlabel('Year')
+plt.ylabel('Population Growth')
 
 # Add title and legend
 plt.title('KMeans Clustering')
@@ -97,20 +105,29 @@ for i in range(kmeans.n_clusters):
   avg_growth_rate = 100 * (pop_2020 / pop_1980) ** (1 / 40) - 100
   print(f'Cluster {i} avg annual growth rate: {avg_growth_rate:.2f}%')
 
-# Read CSV file
-df_co2_emission = pd.read_csv("CO2_emission.csv")
-print(df_co2_emission)
-print(df_co2_emission.describe())
 
-# Transpose and clean data
-df_co2_emission = df_co2_emission.transpose()
-df_co2_emission.columns = df_co2_emission.iloc[0]
-df_co2_emission = df_co2_emission[4:]
+def CO2_emission_data(CO2_emission):
+    """define a function that reads data and returns two dataframes of read and
+    clean/transposed data"""
+    
+    df_co2_emission = pd.read_csv("CO2_emission.csv")
+    print(df_co2_emission)
+    print(df_co2_emission.describe())
 
-# Set index as Year
-df_co2_emission.index.names = ["Year"]
-print(df_co2_emission)
-print(df_co2_emission.describe())
+    # Transpose and clean data
+    df_co2_emission = df_co2_emission.transpose()
+    df_co2_emission.columns = df_co2_emission.iloc[0]
+    df_co2_emission = df_co2_emission[4:]
+
+    # Set index as Year
+    df_co2_emission.index.names = ["Year"]
+    print(df_co2_emission)
+    print(df_co2_emission.describe())
+  
+    return df_co2_emission
+
+
+df_co2_emission = CO2_emission_data('CO2_emission.csv')
 
 # Extract data for Argentina
 years = np.arange(1990, 2021)
@@ -119,8 +136,9 @@ co2_emissions_argentina = df_co2_emission['Argentina']
 
 # Define the exponential model function
 def exponential_model(x, a, b, c):
-    """ defining a function to create a simple exponential model used for 
+    """ define a function to create a simple exponential model used for 
     prediction and confidence range """
+  
     return a * np.exp(b * (x - years[0])) + c
 
 
