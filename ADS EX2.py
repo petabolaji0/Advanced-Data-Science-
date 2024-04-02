@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 10 11:44:44 2023
-APPLIED DATA SCIENCE 1
-@author: Peter Adedeji
-"""
-
 # import standard math library
 import numpy as np
 
