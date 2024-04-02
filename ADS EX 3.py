@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 10 12:10:33 2023
-ADS1
-@author: Peter Adedeji
-"""
 # import standard math library
 import numpy as np
 
