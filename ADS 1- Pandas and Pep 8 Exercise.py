@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 17 11:45:45 2023
-@author: Peter Adedeji
-"""
-
+# Import Libraries
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -53,4 +48,3 @@ plt.show()
 # extract and print data from 2011 to 2020
 GDP_2015dollars_2011_2020 = (GDP_2015dollars[41:])
 print('\n GDP_2015dollars_2011_2020:\n', GDP_2015dollars_2011_2020)
-
